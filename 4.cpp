@@ -763,6 +763,28 @@ int longest(vector<int>&nums){
     }
     return mx;
 }
+vector<int> sieve_of_eratosthenes_prime_factorsation(int n){
+    vector<int> ans;
+    int arr[n+1];
+    for(int i=2;i<=n;i++){
+        arr[i]=i;
+    }
+    for(int i=2;i<=n;i++){
+        if(arr[i]==i){
+            for(int j=i*i;j<=n;j+=i){
+                if(arr[j]==j){
+                    arr[j]=i;
+                }
+            }
+        }
+    }
+    while(n!=1){
+        ans.push_back(arr[n]);
+        n/=arr[n];
+    }
+    return ans;
+}
+
 
 // int longest(std::vector<int>& nums) {
 //     if (nums.empty()) {
